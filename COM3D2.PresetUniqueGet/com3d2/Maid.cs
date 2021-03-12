@@ -9,7 +9,12 @@ namespace COM3D2.PresetUniqueGet
     {
 		public static MaidProp CreateProp(int minval, int maxval, int defval, MPN mpn, int type)
 		{
-			NDebug.Assert(type == 0 || type == 1 || type == 2, "プロパティオブジェクトのタイプが不正です。");
+			//NDebug.Assert(type == 0 || type == 1 || type == 2, "プロパティオブジェクトのタイプが不正です。");
+			if (type > 2 ||  type < 0)
+			{
+				MyLog.Log("プロパティオブジェクトのタイプが不正です");
+				return null;
+			}
 			MaidProp maidProp = new MaidProp();
 			maidProp.name = mpn.ToString();
 			maidProp.type = type;

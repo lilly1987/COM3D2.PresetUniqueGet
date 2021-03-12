@@ -24,9 +24,12 @@ namespace COM3D2.PresetUniqueGet
 
     static class MyLog
     {
+        public static Label l;
+
         public static void Log(object? s)
         {
             Debug.WriteLine(s);
+            l.Text = s.ToString();
         }
     }
 }
