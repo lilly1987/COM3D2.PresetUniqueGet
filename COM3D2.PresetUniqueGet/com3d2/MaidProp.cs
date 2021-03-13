@@ -34,7 +34,7 @@ namespace COM3D2.PresetUniqueGet
 				this.temp_value = f_brRead.ReadInt32();
 			}
 			this.value_LinkMAX = f_brRead.ReadInt32();
-			this.strFileName = f_brRead.ReadString();
+			this.strFileName = f_brRead.ReadString().ToLower();
 			this.nFileNameRID = f_brRead.ReadInt32();
 			this.boDut = f_brRead.ReadBoolean();
 			this.max = f_brRead.ReadInt32();
@@ -80,23 +80,23 @@ namespace COM3D2.PresetUniqueGet
 				subProp2.strFileName = this.strFileName;
 				subProp2.nFileNameRID = this.nFileNameRID;
 				this.listSubProp.Add(subProp2);
-				this.strFileName = CM3.dicDelItem[(MPN)Enum.Parse(typeof(MPN), this.name, true)];
-				this.nFileNameRID = this.strFileName.ToLower().GetHashCode();
+				this.strFileName = CM3.dicDelItem[(MPN)Enum.Parse(typeof(MPN), this.name, true)].ToLower();
+				this.nFileNameRID = this.strFileName.GetHashCode();
 			}
 			if (this.name == "eye_hi" && string.IsNullOrEmpty(this.strFileName))
 			{
-				this.strFileName = "_I_SkinHi.menu";
-				this.nFileNameRID = this.strFileName.ToLower().GetHashCode();
+				this.strFileName = "_I_SkinHi.menu".ToLower();
+				this.nFileNameRID = this.strFileName.GetHashCode();
 			}
 			else if (this.name == "mayu" && string.IsNullOrEmpty(this.strFileName))
 			{
-				this.strFileName = "_I_mayu_001_mugen.menu";
-				this.nFileNameRID = this.strFileName.ToLower().GetHashCode();
+				this.strFileName = "_I_mayu_001_mugen.menu".ToLower();
+				this.nFileNameRID = this.strFileName.GetHashCode();
 			}
 			if (num <= 208 && this.idx == 65 && this.strFileName.ToLower() == "_I_acctatoo_del.menu".ToLower())
 			{
-				this.strFileName = CM3.dicDelItem[MPN.accnail];
-				this.nFileNameRID = this.strFileName.ToLower().GetHashCode();
+				this.strFileName = CM3.dicDelItem[MPN.accnail].ToLower();
+				this.nFileNameRID = this.strFileName.GetHashCode();
 			}
 			this.m_dicTBodySkinPos.Clear();
 			this.m_dicTBodyAttachPos.Clear();
@@ -190,8 +190,8 @@ namespace COM3D2.PresetUniqueGet
 			}
 			if (num < 200 && this.idx == 58 && Path.GetFileNameWithoutExtension(this.strFileName.ToLower()) == "hair_r095_i_")
 			{
-				this.strFileName = "hair_r110_i_.menu";
-				this.nFileNameRID = this.strFileName.ToLower().GetHashCode();
+				this.strFileName = "hair_r110_i_.menu".ToLower();
+				this.nFileNameRID = this.strFileName.GetHashCode();
 			}
 			this.boDut = true;
 			this.boTempDut = false;
