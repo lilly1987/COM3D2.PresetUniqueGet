@@ -69,11 +69,18 @@ namespace COM3D2.PresetUniqueGet
             foreach (var item in result3)
             {
             string source_file = System.IO.Path.Combine(presetDirectory, item);
+            string source_file2 = System.IO.Path.Combine(presetDirectory, item + ".expreset.xml");
             string dest_file =   System.IO.Path.Combine(PresetDirectorySub+t, item);
 
             MyLog.Log(source_file);
             MyLog.Log(dest_file);
+
             System.IO.File.Move(source_file, dest_file);
+            if (File.Exists(source_file2))
+            {
+                string dest_file2 =   System.IO.Path.Combine(PresetDirectorySub+t, item + ".expreset.xml");
+                System.IO.File.Move(source_file2, dest_file2);
+            }
 
             }
         }

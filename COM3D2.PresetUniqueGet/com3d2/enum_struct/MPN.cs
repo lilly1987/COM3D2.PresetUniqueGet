@@ -4,6 +4,7 @@ using System.Text;
 
 namespace COM3D2.PresetUniqueGet
 {
+	/*
 	public enum MPN
 	{
 		// Token: 0x040017C3 RID: 6083
@@ -271,5 +272,5 @@ namespace COM3D2.PresetUniqueGet
 		// Token: 0x04001846 RID: 6214
 		seieki_ashi
 	}
-
+	*/
 }

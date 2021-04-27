@@ -71,7 +71,10 @@ namespace COM3D2.PresetUniqueGet
 					string text = f_brRead.ReadString();
 				}
 				MaidProp maidProp = new MaidProp();
-				maidProp.Deserialize(f_brRead);
+                if (maidProp.Deserialize(f_brRead))
+                {
+					continue;
+                }				
 				hashSet.Add((MPN)maidProp.idx);
 				list.Add(maidProp);
 				if (num <= 110 && maidProp.idx == 10)

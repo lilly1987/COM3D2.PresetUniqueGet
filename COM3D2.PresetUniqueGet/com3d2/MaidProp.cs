@@ -12,6 +12,7 @@ namespace COM3D2.PresetUniqueGet
 		// Token: 0x06001C6B RID: 7275 RVA: 0x000D1DB0 File Offset: 0x000D01B0
 		public bool Deserialize(BinaryReader f_brRead)
 		{
+			bool result=true;
 			//NDebug.Assert(f_brRead.ReadString() == "CM3D2_MPROP", "メイドプロパティのヘッダーが不正です。");
 			if (f_brRead.ReadString() != "CM3D2_MPROP")
 			{
@@ -24,8 +25,16 @@ namespace COM3D2.PresetUniqueGet
 			{
 				this.idx += 2;
 			}
-			this.name = f_brRead.ReadString();
-			this.idx = (int)Enum.Parse(typeof(MPN), this.name, true);
+            this.name = f_brRead.ReadString(); 
+			try
+            {
+                this.idx = (int)Enum.Parse(typeof(MPN), this.name, true);
+            }
+            catch (Exception e)
+            {
+				MyLog.Log("Enum.Parse1 error : " + e.ToString());
+				result = false;
+			}
 			this.type = f_brRead.ReadInt32();
 			this.value_Default = f_brRead.ReadInt32();
 			this.value = f_brRead.ReadInt32();
@@ -197,7 +206,7 @@ namespace COM3D2.PresetUniqueGet
 			this.boTempDut = false;
 			this.strTempFileName = string.Empty;
 			this.nTempFileNameRID = 0;
-			return true;
+			return result;
 		}
 
 		
